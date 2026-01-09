@@ -4,22 +4,91 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>by any chance</title>
-  <style>
-    body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
-    .wrap{max-width:720px;padding:40px}
-    h1{font-size:40px;margin:0 0 10px}
-    p{margin:0 0 20px;line-height:1.6;opacity:.8}
-    a{display:inline-block;margin-right:14px;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
-  </style>
+
+  <link rel="stylesheet" href="./src/ui.css" />
 </head>
 <body>
-  <div class="wrap">
-    <h1>by any chance</h1>
-    <p>작업과 기록을 모아두는 개인 메인 페이지.</p>
 
-    <a href="/works/">works</a>
-    <a href="/about/">about</a>
-    <a href="https://github.com/byanychance">github</a>
-  </div>
+  <!-- Desktop icons -->
+  <main class="desktop" id="desktop">
+    <button class="icon" data-open="Deleted">
+      <div class="glyph">🚫</div>
+      <div class="label">Deleted</div>
+    </button>
+
+    <button class="icon" data-open="folders">
+      <div class="glyph">🗂️</div>
+      <div class="label">Works</div>
+    </button>
+
+    <button class="icon" data-open="Universe">
+      <div class="glyph">🌍</div>
+      <div class="label">Universe</div>
+    </button>
+
+    <button class="icon" data-open="Characters">
+      <div class="glyph">👥</div>
+      <div class="label">Characters</div>
+    </button>
+
+    <button class="icon" data-open="Gallery">
+      <div class="glyph">🎞️</div>
+      <div class="label">Gallery</div>
+    </button>
+
+    <button class="icon" data-open="Links">
+      <div class="glyph">🔗</div>
+      <div class="label">Links</div>
+    </button>
+  </main>
+
+  <!-- Taskbar -->
+  <footer class="taskbar">
+    <div class="start" id="startBtn" title="Open works">
+      <span>🍥</span><b>ByAnyChance</b>
+    </div>
+    <div class="hint">Hello World!</div>
+    <div class="clock" id="clock"></div>
+  </footer>
+
+  <!-- Window overlay -->
+  <section class="overlay" id="overlay" aria-hidden="true">
+    <div class="window" role="dialog" aria-modal="true" aria-label="window">
+      <div class="titlebar">
+        <div class="left">
+          <div class="dots" aria-hidden="true">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          </div>
+          <span id="winTitle">works</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn" id="backBtn" title="Back" style="display:none;">← Back</button>
+          <button class="btn" id="closeBtn" title="Close">Close</button>
+        </div>
+      </div>
+      <div class="content" id="content"></div>
+    </div>
+  </section>
+
+  <!-- Browser overlay (chrome-like) -->
+  <section class="overlay" id="browserOverlay" aria-hidden="true">
+    <div class="window" role="dialog" aria-modal="true" aria-label="browser">
+      <div class="titlebar">
+        <div class="left">
+          <div class="dots" aria-hidden="true">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          </div>
+          <span id="browserTitle">doc</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn" id="browserBack" title="Back" style="display:none;">← Back</button>
+          <button class="btn" id="browserClose" title="Close">Close</button>
+        </div>
+      </div>
+      <div class="content" id="browserContent"></div>
+    </div>
+  </section>
+
+  <script type="module" src="./src/app.js"></script>
 </body>
 </html>
